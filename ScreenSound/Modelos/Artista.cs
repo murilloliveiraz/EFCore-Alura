@@ -1,14 +1,14 @@
 ﻿namespace ScreenSound.Modelos; 
 
-internal class Artista 
+public class Artista 
 {
-    private List<Musica> musicas = new List<Musica>();
+    public virtual ICollection<Musica> Musicas { get; set; } = new List<Musica>();
 
     public Artista(string nome, string bio)
     {
         Nome = nome;
         Bio = bio;
-        FotoPerfil = "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png";
+        FotoPerfil = "https://s2-oglobo.glbimg.com/RGhnQBKhI5zrPBborlB2vpA8LiM=/0x217:1500x1516/888x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_da025474c0c44edd99332dddb09cabe8/internal_photos/bs/2022/d/2/8ABViBQAuBfO8r2mIxRA/caetano-vale.jpg";
     }
 
     public string Nome { get; set; }
@@ -18,15 +18,15 @@ internal class Artista
 
     public void AdicionarMusica(Musica musica)
     {
-        musicas.Add(musica);
+        Musicas.Add(musica);
     }
 
     public void ExibirDiscografia()
     {
         Console.WriteLine($"Discografia do artista {Nome}");
-        foreach (var musica in musicas)
+        foreach (var musica in Musicas)
         {
-            Console.WriteLine($"Música: {musica.Nome}");
+            Console.WriteLine($"Música: {musica.Nome} - Ano de Lançamento: {musica.AnoDeLancamento}");
         }
     }
 
